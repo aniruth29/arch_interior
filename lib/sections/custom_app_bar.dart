@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CustomAppBar extends StatelessWidget {
   final VoidCallback? onAboutTap;
   final VoidCallback? onProjectsTap;
@@ -13,10 +14,23 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Obtain screen size using MediaQuery
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
+
+    // Responsive values
+    final horizontalPadding = screenWidth * 0.05; // 5% of screen width
+    final verticalPadding = screenHeight * 0.015; // 1.5% of screen height
+    final logoHeight = screenHeight * 0.05; // 5% of screen height
+
     return Material(
       elevation: 4,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+        padding: EdgeInsets.symmetric(
+          horizontal: horizontalPadding,
+          vertical: verticalPadding,
+        ),
         color: Theme.of(context).colorScheme.onPrimary,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,9 +39,11 @@ class CustomAppBar extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-
-                  child: Image.asset('assets/logo.webp',filterQuality: FilterQuality.high,),
-                  height:40 ,
+                  height: logoHeight,
+                  child: Image.asset(
+                    'assets/logo.webp',
+                    filterQuality: FilterQuality.high,
+                  ),
                 ),
               ],
             ),
@@ -73,4 +89,3 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 }
-

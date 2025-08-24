@@ -22,10 +22,11 @@ class _ClientsSectionState extends State<ClientsSection> {
     'assets/swanag.webp',
     'assets/sundaram.webp',
     'assets/indocool.webp',
-    'assets/century_ply.webp',
+    'assets/century_ply.png',
     'assets/rks.webp',
     'assets/tidc.webp'
   ];
+
   @override
   void initState() {
     super.initState();
@@ -51,16 +52,58 @@ class _ClientsSectionState extends State<ClientsSection> {
       }
     });
   }
+
   @override
   void dispose() {
     _timer?.cancel();
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Breakpoints for responsive design
+    final bool isMobile = screenWidth < 600;
+    final bool isTablet = screenWidth >= 600 && screenWidth < 1200;
+
+    // Responsive values
+    final double sectionHeight = isMobile
+        ? screenHeight * 0.2  // Reduced height for mobile
+        : (isTablet ? screenHeight * 0.25 : screenHeight * 0.3);
+
+    final double viewportFraction = isMobile
+        ? 0.5
+        : (isTablet ? 0.4 : 0.4);
+
+    final double itemWidth = isMobile
+        ? screenWidth * 0.4
+        : (isTablet ? screenWidth * 0.4 : screenWidth * 0.3 );
+
+    final double itemHeight = isMobile
+        ? screenHeight * 0.14  // Reduced card height for mobile
+        : (isTablet ? screenHeight * 0.18 : screenHeight * 0.25);
+
+    final double imageHeight = isMobile
+        ? screenHeight * 0.06 // Reduced image height for mobile
+        : (isTablet ? screenHeight * 0.08 :  screenHeight * 0.2);
+
+    final double dividerIndent = isMobile
+        ? screenWidth * 0.1
+        : 100;
+
+    final double horizontalPadding = isMobile
+        ? 16.0
+        : 24.0;
+
+    final double titleFontSize = isMobile
+        ? 24.0
+        : (isTablet ? 28.0 : 32.0);
+
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(horizontalPadding),
       child: Column(
         children: [
           Text(
@@ -68,21 +111,21 @@ class _ClientsSectionState extends State<ClientsSection> {
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
+              fontSize: titleFontSize,
             ),
           ),
           const SizedBox(height: 10),
           Divider(
             thickness: 2,
-            indent: 100,
-            endIndent: 100,
+            indent: dividerIndent,
+            endIndent: dividerIndent,
             color: Theme.of(context).disabledColor,
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20), // Reduced spacing for mobile
           SizedBox(
-            height: 300,
+            height: sectionHeight,
             child: PageView.builder(
               controller: _controller,
-              // no itemCount for infinite scroll
               itemBuilder: (context, index) {
                 final int actualIndex = index % clientImages.length;
                 final diff = (_currentPage - index).abs();
@@ -90,9 +133,12 @@ class _ClientsSectionState extends State<ClientsSection> {
                 return Transform.scale(
                   scale: scale,
                   child: SizedBox(
-                    width: 180,
+                    width: itemWidth,
+                    height: itemHeight, // Added explicit height constraint
                     child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: isMobile ? 4 : 8,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
@@ -105,19 +151,19 @@ class _ClientsSectionState extends State<ClientsSection> {
                         ],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(isMobile ? 8.0 : 16.0), // Reduced padding for mobile
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 250,
-                              height: 100,
+                              width: itemWidth * 0.8,
+                              height: imageHeight,
                               child: Image.asset(
                                 clientImages[actualIndex],
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            const SizedBox(height: 12),
+                            SizedBox(height: isMobile ? 4 : 8), // Reduced spacing for mobile
                           ],
                         ),
                       ),
@@ -129,8 +175,8 @@ class _ClientsSectionState extends State<ClientsSection> {
           ),
           Divider(
             thickness: 2,
-            indent: 100,
-            endIndent: 100,
+            indent: dividerIndent,
+            endIndent: dividerIndent,
             color: Theme.of(context).disabledColor,
           ),
         ],

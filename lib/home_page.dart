@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             const HeroSection(),
             const PortfolioSection(),
             const ClientsSection(),
-            const VisionMissionSection(),
+            const FactorySection(),
             ContactSection(key: _contactKey),
             const FooterSection(),
           ],

@@ -14,8 +14,8 @@ class _AboutusHeroSection extends State<AboutusHeroSection> {
   late Timer _timer;
 
   final List<String> _images = [
-    'assets/modular_interior.jpg',
-    'assets/modular_kitchen.jpeg',
+    'assets/modular_interior.webp',
+    'assets/modular_kitchen.webp',
 
   ];
 

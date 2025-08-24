@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.0.0
   material_symbols_icons: ^4.2719.0 # Or latest
+  video_player: ^2.8.2
+  chewie: ^1.7.2
 
 
 dev_dependencies:
@@ -92,6 +94,8 @@ flutter:
     - assets/construction.webp
   #  - assets/wooden_fact.JPG
     - assets/aluminium_fact.webp
+    - assets/videos/arch_aluminium_factory.mp4
+    - assets/videos/arch_wood_factory.mp4
 
 
   # The following line ensures that the Material Icons font is
