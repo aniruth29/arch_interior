@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-// ... existing code ...
-class ProjectsPage extends StatefulWidget {
+class FactoryImagePage extends StatefulWidget {
   final String initialCategory;
   
-  const ProjectsPage({
-    super.key,
+  const FactoryImagePage({
+    Key? key, 
     this.initialCategory = 'All',
-  });
+  }) : super(key: key);
 
   @override
-  State<ProjectsPage> createState() => _ProjectsPageState();
+  State<FactoryImagePage> createState() => _FactoryImagePageState();
 }
 
-class _ProjectsPageState extends State<ProjectsPage> {
+class _FactoryImagePageState extends State<FactoryImagePage> {
   late String selectedCategory;
 
   @override
@@ -23,7 +22,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
   }
 
   // Simple arrays with just image paths
-  final List<String> residentialImages = [
+  final List<String> woodenFactoryImages = [
     'assets/room.webp',
     'assets/room1.webp',
     'assets/room1,1.webp',
@@ -34,7 +33,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     'assets/modular_interior.webp',
   ];
 
-  final List<String> commercialImages = [
+  final List<String> aluminiumFactoryImages = [
     'assets/office.webp',
     'assets/commerical.webp',
     'assets/construction.webp',
@@ -47,11 +46,11 @@ class _ProjectsPageState extends State<ProjectsPage> {
 
   List<String> getFilteredImages() {
     if (selectedCategory == 'All') {
-      return [...residentialImages, ...commercialImages];
-    } else if (selectedCategory == 'Residential') {
-      return residentialImages;
+      return [...woodenFactoryImages, ...aluminiumFactoryImages];
+    } else if (selectedCategory == 'Wooden Factory') {
+      return woodenFactoryImages;
     } else {
-      return commercialImages;
+      return aluminiumFactoryImages;
     }
   }
 
@@ -88,7 +87,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
             // Toggle Buttons with navigation
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: ['All', 'Residential', 'Commercial'].map((category) {
+              children: ['All', 'Wooden Factory', 'Aluminium Factory'].map((category) {
                 final isSelected = selectedCategory == category;
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -120,14 +119,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 decoration: BoxDecoration(
-                  color: selectedCategory == 'Residential' 
-                      ? Colors.blue.withOpacity(0.1) 
-                      : Colors.green.withOpacity(0.1),
+                  color: selectedCategory == 'Wooden Factory' 
+                      ? Colors.brown.withOpacity(0.1) 
+                      : Colors.grey.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: selectedCategory == 'Residential' 
-                        ? Colors.blue.withOpacity(0.3) 
-                        : Colors.green.withOpacity(0.3),
+                    color: selectedCategory == 'Wooden Factory' 
+                        ? Colors.brown.withOpacity(0.3) 
+                        : Colors.grey.withOpacity(0.3),
                   ),
                 ),
                 child: Text(
@@ -135,9 +134,9 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: selectedCategory == 'Residential' 
-                        ? Colors.blue[800] 
-                        : Colors.green[800],
+                    color: selectedCategory == 'Wooden Factory' 
+                        ? Colors.brown[800] 
+                        : Colors.grey[800],
                   ),
                   textAlign: TextAlign.center,
                 ),

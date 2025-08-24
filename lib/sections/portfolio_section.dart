@@ -1,4 +1,6 @@
+// ... existing code ...
 import 'package:flutter/material.dart';
+import 'projects_page.dart';
 
 class PortfolioSection extends StatelessWidget {
   const PortfolioSection({super.key});
@@ -16,7 +18,7 @@ class PortfolioSection extends StatelessWidget {
     // Responsive card height
     final double cardHeight = isMobile
         ? screenHeight * 0.9
-        : (isTablet ? screenHeight * 0.75 : screenHeight * 0.95);
+        : (isTablet ? screenHeight * 0.5 : screenHeight * 0.7);
 
     // Responsive icon size and gap
     final double iconSize = isMobile
@@ -31,6 +33,15 @@ class PortfolioSection extends StatelessWidget {
 
     MainAxisAlignment iconRowAlignment =
     (isTablet || isLargeScreen) ? MainAxisAlignment.center : MainAxisAlignment.start;
+
+    void navigateToProjects(BuildContext context, String category) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProjectsPage(initialCategory: category),
+        ),
+      );
+    }
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -88,7 +99,7 @@ class PortfolioSection extends StatelessWidget {
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(20),
                             ),
-                            onTap: () {},
+                            onTap: () => navigateToProjects(context, 'Residential'),
                             child: Container(
                               padding: EdgeInsets.all(isMobile ? 16 : 24),
                               child: Column(
@@ -174,7 +185,7 @@ class PortfolioSection extends StatelessWidget {
                               bottomLeft: Radius.circular(20),
                               bottomRight: Radius.circular(20),
                             ),
-                            onTap: () {},
+                            onTap: () => navigateToProjects(context, 'Commercial'),
                             child: Container(
                               padding: EdgeInsets.all(isMobile ? 16 : 24),
                               child: Column(
@@ -260,7 +271,7 @@ class PortfolioSection extends StatelessWidget {
                               topLeft: Radius.circular(20),
                               bottomLeft: Radius.circular(20),
                             ),
-                            onTap: () {},
+                            onTap: () => navigateToProjects(context, 'Residential'),
                             child: Container(
                               padding: const EdgeInsets.all(24),
                               child: Column(
@@ -345,7 +356,7 @@ class PortfolioSection extends StatelessWidget {
                               topRight: Radius.circular(20),
                               bottomRight: Radius.circular(20),
                             ),
-                            onTap: () {},
+                            onTap: () => navigateToProjects(context, 'Commercial'),
                             child: Container(
                               padding: const EdgeInsets.all(24),
                               child: Column(
