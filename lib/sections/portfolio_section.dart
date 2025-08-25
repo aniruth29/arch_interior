@@ -18,7 +18,7 @@ class PortfolioSection extends StatelessWidget {
     // Responsive card height
     final double cardHeight = isMobile
         ? screenHeight * 0.9
-        : (isTablet ? screenHeight * 0.5 : screenHeight * 0.7);
+        : (isTablet ? screenHeight * 0.75 : screenHeight * 0.75);
 
     // Responsive icon size and gap
     final double iconSize = isMobile

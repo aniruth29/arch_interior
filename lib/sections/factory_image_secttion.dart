@@ -23,25 +23,18 @@ class _FactoryImagePageState extends State<FactoryImagePage> {
 
   // Simple arrays with just image paths
   final List<String> woodenFactoryImages = [
-    'assets/room.webp',
-    'assets/room1.webp',
-    'assets/room1,1.webp',
-    'assets/room1,2.webp',
-    'assets/room2,1.webp',
-    'assets/room2,2.webp',
-    'assets/modular_bedroom.webp',
-    'assets/modular_interior.webp',
+   "assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp",
+    "assets/aluminium_factory/fc1b8636-9054-4e0e-9d48-86b3b6727e86.webp",
+    "assets/aluminium_factory/4512145e-c6d0-4174-a476-3b23650cf89f.webp",
+    " assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp",
+    "assets/aluminium_factory/9f104f22-0d80-4165-9bbc-d738ec9c49d4.webp",
   ];
 
   final List<String> aluminiumFactoryImages = [
-    'assets/office.webp',
-    'assets/commerical.webp',
-    'assets/construction.webp',
-    'assets/indocool.webp',
-    'assets/km.png',
-    'assets/ashok_leyland_logo.webp',
-    'assets/brakes_india.webp',
-    'assets/century_ply.png',
+   " assets/wooden_factory/IMG_0133.webp",
+    "assets/wooden_factory/IMG_0134.webp",
+    "assets/wooden_factory/IMG_0140.webp",
+    "assets/wooden_factory/IMG_0136.webp"
   ];
 
   List<String> getFilteredImages() {

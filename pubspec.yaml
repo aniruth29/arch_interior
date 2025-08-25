@@ -96,6 +96,61 @@ flutter:
     - assets/aluminium_fact.webp
     - assets/videos/arch_aluminium_factory.mp4
     - assets/videos/arch_wood_factory.mp4
+    - assets/residential/1.webp
+    - assets/residential/2.webp
+    - assets/residential/3.webp
+    - assets/residential/4.webp
+    - assets/residential/5.webp
+    - assets/residential/6.webp
+    - assets/residential/7.webp
+    - assets/residential/8.webp
+    - assets/residential/9.webp
+    - assets/residential/10.webp
+    - assets/residential/11.webp
+    - assets/residential/12.webp
+    - assets/residential/13.webp
+    - assets/residential/14.webp
+    - assets/residential/15.webp
+    - assets/residential/16.webp
+    - assets/residential/17.webp
+    - assets/residential/18.webp
+    - assets/residential/19.webp
+    - assets/residential/20.webp
+    - assets/residential/21.webp
+    - assets/residential/22.webp
+    - assets/residential/23.webp
+    - assets/residential/24.webp
+    - assets/residential/25.webp
+    - assets/residential/26.webp
+    - assets/residential/27.webp
+    - assets/residential/28.webp
+    - assets/residential/29.webp
+    - assets/residential/30.webp
+    - assets/residential/31.webp
+    - assets/residential/32.webp
+    - assets/residential/33.webp
+    - assets/residential/34.webp
+    - assets/residential/35.webp
+    - assets/residential/36.webp
+    - assets/residential/37.webp
+    - assets/residential/38.webp
+    - assets/residential/39.webp
+    - assets/residential/40.webp
+    - assets/residential/41.webp
+    - assets/residential/42.webp
+    - assets/residential/43.webp
+    - assets/residential/44.webp
+    - assets/residential/45.webp
+    - assets/wooden_factory/IMG_0133.webp
+    - assets/wooden_factory/IMG_0134.webp
+    - assets/wooden_factory/IMG_0140.webp
+    - assets/wooden_factory/IMG_0136.webp
+    - assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp
+    - assets/aluminium_factory/fc1b8636-9054-4e0e-9d48-86b3b6727e86.webp
+    - assets/aluminium_factory/4512145e-c6d0-4174-a476-3b23650cf89f.webp
+    - assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp
+    - assets/aluminium_factory/9f104f22-0d80-4165-9bbc-d738ec9c49d4.webp
+
 
 
   # The following line ensures that the Material Icons font is
