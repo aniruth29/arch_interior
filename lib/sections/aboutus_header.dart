@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:panorama/panorama.dart';
 
 class AboutusHeroSection extends StatefulWidget {
   const AboutusHeroSection({super.key});
@@ -13,11 +14,8 @@ class _AboutusHeroSection extends State<AboutusHeroSection> {
   int _currentPage = 0;
   late Timer _timer;
 
-  final List<String> _images = [
-    'assets/modular_interior.webp',
-    'assets/modular_kitchen.webp',
-
-  ];
+  // Note: Mark the 360 panorama image with '.360' suffix for logic
+  final List<String> _images = ['assets/image_360.jpg'];
 
   @override
   void initState() {
@@ -72,10 +70,8 @@ class _AboutusHeroSection extends State<AboutusHeroSection> {
     final screenSize = MediaQuery.of(context).size;
     final isLargeScreen = screenSize.width > 1200;
 
-    // Calculate height based on screen size
-    final double height = isLargeScreen
-        ? screenSize.height * 0.8  // 80% on large screens
-        : screenSize.height * 0.6; // 60% on normal screens
+    final double height =
+        isLargeScreen ? screenSize.height * 0.8 : screenSize.height * 0.6;
 
     return SizedBox(
       width: double.infinity,
@@ -83,70 +79,56 @@ class _AboutusHeroSection extends State<AboutusHeroSection> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // PageView with images
+          // PageView showing images or panorama
           PageView.builder(
             controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: _images.length,
             onPageChanged: (index) => setState(() => _currentPage = index),
-            itemBuilder: (context, index) => Image.asset(
-              _images[index],
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
+            itemBuilder: (context, index) {
+              final String img = _images[index];
+              if (img.contains("_360") || img.contains(".360.")) {
+                // Panorama Image - use Panorama widget for full 360°
+                return Panorama(
+                  sensorControl: SensorControl.None,
+                  interactive: true,
+                  longitude: 0,
+                  latitude: 0,
+
+                  // zoom: 1,
+                  child: Image.asset(
+                    'assets/image_360.jpg',
+                    filterQuality: FilterQuality.high,
+                  ),
+                );
+              } else {
+                // Normal Image
+                return Image.asset(
+                  img,
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  width: double.infinity,
+                  height: double.infinity,
+                );
+              }
+            },
           ),
 
-          // Gradient overlay for better text visibility
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [
-                  Colors.black.withOpacity(0.7),
-                  Colors.transparent,
-                ],
-                stops: const [0.1, 0.5],
+          // Gradient overlay for better text visibility (doesn't block gestures)
+          IgnorePointer(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Colors.black.withOpacity(0.7), Colors.transparent],
+                  stops: const [0.1, 0.5],
+                ),
               ),
             ),
           ),
 
-          // Text Overlay
-          Positioned(
-            left: isLargeScreen ? screenSize.width * 0.1 : 40,
-            bottom: height * 0.15,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-
-              ],
-            ),
-          ),
-
-          // Navigation Arrows
-          if (isLargeScreen) ...[
-            // Previous Button
-            Positioned(
-              left: 40,
-              top: height / 2 - 30,
-              child: _NavButton(
-                icon: Icons.arrow_back_ios,
-                onTap: _goToPrevious,
-              ),
-            ),
-            // Next Button
-            Positioned(
-              right: 40,
-              top: height / 2 - 30,
-              child: _NavButton(
-                icon: Icons.arrow_forward_ios,
-                onTap: _goToNext,
-              ),
-            ),
-          ],
-
-          // Page Indicators
+          // Page indicators at bottom center
           Positioned(
             bottom: 40,
             left: 0,
@@ -155,19 +137,21 @@ class _AboutusHeroSection extends State<AboutusHeroSection> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(_images.length, (index) {
                 return GestureDetector(
-                  onTap: () => _pageController.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.easeInOut,
-                  ),
+                  onTap:
+                      () => _pageController.animateToPage(
+                        index,
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.easeInOut,
+                      ),
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 6),
                     height: 4,
                     width: _currentPage == index ? 40 : 30,
                     decoration: BoxDecoration(
-                      color: _currentPage == index
-                          ? Colors.white
-                          : Colors.white.withOpacity(0.5),
+                      color:
+                          _currentPage == index
+                              ? Colors.white
+                              : Colors.white.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -185,10 +169,7 @@ class _NavButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
 
-  const _NavButton({
-    required this.icon,
-    required this.onTap,
-  });
+  const _NavButton({required this.icon, required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -197,17 +178,11 @@ class _NavButton extends StatelessWidget {
       child: Container(
         width: 60,
         height: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black45,
           shape: BoxShape.circle,
         ),
-        child: Center(
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 30,
-          ),
-        ),
+        child: Center(child: Icon(icon, color: Colors.white, size: 30)),
       ),
     );
   }

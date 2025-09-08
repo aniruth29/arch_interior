@@ -6,15 +6,15 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+   // final screenHeight = MediaQuery.of(context).size.height;
 
     final cardWidth = screenWidth * 0.9;   // 90% of screen width
-    final cardHeight = screenHeight * 0.6; // 80% of screen height
+
 
     return Center(
       child: SizedBox(
         width: cardWidth,
-        height: cardHeight,
+
         child: Card(
           elevation: 8,
           color: Theme.of(context).colorScheme.onPrimary,
@@ -31,7 +31,6 @@ class ContactSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     color: Theme.of(context).primaryColor
                   ),
-
                 ),
                 const SizedBox(height: 16),
                 TextField(

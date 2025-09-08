@@ -173,6 +173,7 @@ class _ClientsSectionState extends State<ClientsSection> {
               },
             ),
           ),
+        const SizedBox(height: 20),
           Divider(
             thickness: 2,
             indent: dividerIndent,

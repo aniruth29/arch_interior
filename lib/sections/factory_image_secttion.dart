@@ -26,12 +26,12 @@ class _FactoryImagePageState extends State<FactoryImagePage> {
    "assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp",
     "assets/aluminium_factory/fc1b8636-9054-4e0e-9d48-86b3b6727e86.webp",
     "assets/aluminium_factory/4512145e-c6d0-4174-a476-3b23650cf89f.webp",
-    " assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp",
+    "assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp",
     "assets/aluminium_factory/9f104f22-0d80-4165-9bbc-d738ec9c49d4.webp",
   ];
 
   final List<String> aluminiumFactoryImages = [
-   " assets/wooden_factory/IMG_0133.webp",
+   "assets/wooden_factory/IMG_0133.webp",
     "assets/wooden_factory/IMG_0134.webp",
     "assets/wooden_factory/IMG_0140.webp",
     "assets/wooden_factory/IMG_0136.webp"
@@ -70,8 +70,8 @@ class _FactoryImagePageState extends State<FactoryImagePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Our Projects"),
-        backgroundColor: Colors.orange,
+        title: const Text("Our Factories"),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -87,7 +87,7 @@ class _FactoryImagePageState extends State<FactoryImagePage> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
-                          isSelected ? Colors.orange : Colors.grey[300],
+                          isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
                       foregroundColor:
                           isSelected ? Colors.white : Colors.black,
                       elevation: isSelected ? 4 : 1,

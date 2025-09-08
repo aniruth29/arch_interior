@@ -57,7 +57,7 @@ class PortfolioSection extends StatelessWidget {
             side: BorderSide(color: Theme.of(context).colorScheme.onPrimary),
           ),
           child: SizedBox(
-            height: cardHeight,
+            // height: cardHeight,
             width: isMobile ? screenWidth * 0.98 : screenWidth * 0.95,
             child: IntrinsicHeight(
               child: Column(

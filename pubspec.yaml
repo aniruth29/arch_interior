@@ -39,6 +39,7 @@ dependencies:
   material_symbols_icons: ^4.2719.0 # Or latest
   video_player: ^2.8.2
   chewie: ^1.7.2
+  panorama: ^0.4.1
 
 
 dev_dependencies:
@@ -69,6 +70,7 @@ flutter:
     - assets/client2.webp
     - assets/client3.webp
     - assets/logo.webp
+    - assets/room.webp
     - assets/modular_kitchen.webp
     - assets/wardrobe.webp
     - assets/modular_interior.webp
@@ -90,6 +92,8 @@ flutter:
     - assets/rks.webp
     - assets/tidc.webp
     - assets/logo_bg.webp
+    - assets/image_360.jpg
+    - assets/image2_360.jpg
     - assets/aboutus_image.webp
     - assets/construction.webp
   #  - assets/wooden_fact.JPG
@@ -148,7 +152,6 @@ flutter:
     - assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp
     - assets/aluminium_factory/fc1b8636-9054-4e0e-9d48-86b3b6727e86.webp
     - assets/aluminium_factory/4512145e-c6d0-4174-a476-3b23650cf89f.webp
-    - assets/aluminium_factory/1d6dc1f9-bc63-4643-9002-c5d1524420ac.webp
     - assets/aluminium_factory/9f104f22-0d80-4165-9bbc-d738ec9c49d4.webp
 
 
