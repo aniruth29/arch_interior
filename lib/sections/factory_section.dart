@@ -669,126 +669,359 @@ class _FactorySectionState extends State<FactorySection> {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
         child: Center(
-          child: Card(
-            elevation: 10,
-            color: Theme.of(context).colorScheme.onPrimary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(20.0),
-              width: screenSize.width * 0.95,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 18),
-                    child: Text(
-                      'Our Factories',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                        fontSize: titleFontSize,
-                      ),
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            width: screenSize.width * 0.95,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  child: Text(
+                    'Our Factories',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                      fontSize: titleFontSize,
                     ),
                   ),
-                  SizedBox(height: 30),
-                  if (isMobile)
-                    Column(
-                      children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => const FactoryImagePage(
-                                  initialCategory: 'Aluminium Factory',
+                ),
+                SizedBox(height: 30),
+                if (isMobile)
+                  Column(
+                    children: [
+                      InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => const FactoryImagePage(
+                                initialCategory: 'Aluminium Factory',
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              _buildAluminiumVideoPlayer(),
+                              SizedBox(height: 20),
+                              Text(
+                                'Aluminium Factory',
+                                style: TextStyle(
+                                  fontSize: factoryTitleFontSize,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.location_on,
+                                      'Location : Thirumulaivoyil \nAmbattur',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.area_chart,
+                                      'Area: 2500sqft',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.precision_manufacturing,
+                                      'Advanced Machines',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.people,
+                                      '20 + Workers',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+                              Text(
+                                'Main production facility with advanced machinery',
+                                style: TextStyle(
+                                  fontSize: descriptionFontSize,
                                 ),
-                              ],
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Take a virtual tour of our Arch Aluminium factory facilities',
+                                style: TextStyle(
+                                  fontSize: descriptionFontSize,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 8),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => const FactoryImagePage(
+                                initialCategory: 'Wooden Factory',
+                              ),
                             ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              _buildWoodVideoPlayer(),
+                              SizedBox(height: 20),
+                              Text(
+                                'Wood Factory',
+                                style: TextStyle(
+                                  fontSize: factoryTitleFontSize,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.location_on,
+                                      'Location : Pothur,Redhills',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.area_chart,
+                                      'Area:5000 sqft',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.precision_manufacturing,
+                                      'Plywood Processing Unit',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                  SizedBox(width: 16),
+                                  Expanded(
+                                    child: buildIconColumn(
+                                      Icons.people,
+                                      '35 + Workers',
+                                      iconContainerSize,
+                                      descriptionFontSize,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+                              Text(
+                                'Secondary production facility',
+                                style: TextStyle(
+                                  fontSize: descriptionFontSize,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Explore our wood factory facilities',
+                                style: TextStyle(
+                                  fontSize: descriptionFontSize,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                else
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => const FactoryImagePage(
+                                      initialCategory:
+                                      'Aluminium Factory',
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: videoHeight,
+                                padding: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5),
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Aluminium Factory',
+                                      style: TextStyle(
+                                        fontSize: factoryTitleFontSize,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.location_on,
+                                            'Location : Thirumulaivoyil \nAmbattur',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                        SizedBox(width: 16),
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.area_chart,
+                                            'Area : 2500 sqft',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.precision_manufacturing,
+                                            'Advanced Machines',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                        SizedBox(width: 16),
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.people,
+                                            '20 + Workers',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 16),
+                                    Text(
+                                      'Main production facility with advanced machinery',
+                                      style: TextStyle(
+                                        fontSize: descriptionFontSize,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 8),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Expanded(
+                            flex: 3,
                             child: Column(
                               children: [
                                 _buildAluminiumVideoPlayer(),
-                                SizedBox(height: 20),
-                                Text(
-                                  'Aluminium Factory',
-                                  style: TextStyle(
-                                    fontSize: factoryTitleFontSize,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.location_on,
-                                        'Location : Thirumulaivoyil \nAmbattur',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                    SizedBox(width: 16),
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.area_chart,
-                                        'Area: 2500sqft',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.precision_manufacturing,
-                                        'Advanced Machines',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                    SizedBox(width: 16),
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.people,
-                                        '20 + Workers',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 16),
-                                Text(
-                                  'Main production facility with advanced machinery',
-                                  style: TextStyle(
-                                    fontSize: descriptionFontSize,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
                                 SizedBox(height: 8),
                                 Text(
                                   'Take a virtual tour of our Arch Aluminium factory facilities',
@@ -802,99 +1035,26 @@ class _FactorySectionState extends State<FactorySection> {
                               ],
                             ),
                           ),
-                        ),
-                        SizedBox(height: 30),
-                        InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => const FactoryImagePage(
-                                  initialCategory: 'Wooden Factory',
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5),
-                                ),
-                              ],
-                            ),
+                        ],
+                      ),
+                      SizedBox(height: 50),
+                      Divider(
+                        color: Theme.of(context).primaryColor,
+                        thickness: 2,
+                        height: 20,
+                        indent: 10,
+                        endIndent: 10,
+                      ),
+                      SizedBox(height: 50),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 3,
                             child: Column(
                               children: [
                                 _buildWoodVideoPlayer(),
-                                SizedBox(height: 20),
-                                Text(
-                                  'Wood Factory',
-                                  style: TextStyle(
-                                    fontSize: factoryTitleFontSize,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.location_on,
-                                        'Location : Pothur,Redhills',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                    SizedBox(width: 16),
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.area_chart,
-                                        'Area:5000 sqft',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.precision_manufacturing,
-                                        'Plywood Processing Unit',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                    SizedBox(width: 16),
-                                    Expanded(
-                                      child: buildIconColumn(
-                                        Icons.people,
-                                        '35 + Workers',
-                                        iconContainerSize,
-                                        descriptionFontSize,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 16),
-                                Text(
-                                  'Secondary production facility',
-                                  style: TextStyle(
-                                    fontSize: descriptionFontSize,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
                                 SizedBox(height: 8),
                                 Text(
                                   'Explore our wood factory facilities',
@@ -904,56 +1064,49 @@ class _FactorySectionState extends State<FactorySection> {
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
+                                SizedBox(height: 8),
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    )
-                  else
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(20),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (context) => const FactoryImagePage(
-                                        initialCategory:
-                                        'Aluminium Factory',
-                                      ),
+                          SizedBox(width: 30),
+                          Expanded(
+                            flex: 2,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(20),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => const FactoryImagePage(
+                                      initialCategory: 'Wooden Factory',
                                     ),
-                                  );
-                                },
-                                child: Container(
-                                  height: videoHeight,
-                                  padding: EdgeInsets.all(20),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        blurRadius: 10,
-                                        offset: Offset(0, 5),
-                                      ),
-                                    ],
                                   ),
+                                );
+                              },
+                              child: Container(
+                                height: videoHeight,
+                                padding: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 5),
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.center,
                                     crossAxisAlignment:
                                     CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Aluminium Factory',
+                                        'Wood Factory',
                                         style: TextStyle(
                                           fontSize: factoryTitleFontSize,
                                           fontWeight: FontWeight.bold,
@@ -962,13 +1115,11 @@ class _FactorySectionState extends State<FactorySection> {
                                       ),
                                       SizedBox(height: 16),
                                       Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
                                         children: [
                                           Expanded(
                                             child: buildIconColumn(
                                               Icons.location_on,
-                                              'Location : Thirumulaivoyil \nAmbattur',
+                                              'Location : Pothur,Redhills',
                                               iconContainerSize,
                                               descriptionFontSize,
                                             ),
@@ -977,22 +1128,20 @@ class _FactorySectionState extends State<FactorySection> {
                                           Expanded(
                                             child: buildIconColumn(
                                               Icons.area_chart,
-                                              'Area : 2500 sqft',
+                                              'Area: 5000 sqft',
                                               iconContainerSize,
                                               descriptionFontSize,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 16),
+                                      SizedBox(height: 50),
                                       Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
                                         children: [
                                           Expanded(
                                             child: buildIconColumn(
                                               Icons.precision_manufacturing,
-                                              'Advanced Machines',
+                                              'Plywood Processing Unit',
                                               iconContainerSize,
                                               descriptionFontSize,
                                             ),
@@ -1001,7 +1150,7 @@ class _FactorySectionState extends State<FactorySection> {
                                           Expanded(
                                             child: buildIconColumn(
                                               Icons.people,
-                                              '20 + Workers',
+                                              '35 + Workers',
                                               iconContainerSize,
                                               descriptionFontSize,
                                             ),
@@ -1016,173 +1165,17 @@ class _FactorySectionState extends State<FactorySection> {
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
-                                      SizedBox(height: 8),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              flex: 3,
-                              child: Column(
-                                children: [
-                                  _buildAluminiumVideoPlayer(),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    'Take a virtual tour of our Arch Aluminium factory facilities',
-                                    style: TextStyle(
-                                      fontSize: descriptionFontSize,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(height: 8),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 50),
-                        Divider(
-                          color: Theme.of(context).primaryColor,
-                          thickness: 2,
-                          height: 20,
-                          indent: 10,
-                          endIndent: 10,
-                        ),
-                        SizedBox(height: 50),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              flex: 3,
-                              child: Column(
-                                children: [
-                                  _buildWoodVideoPlayer(),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    'Explore our wood factory facilities',
-                                    style: TextStyle(
-                                      fontSize: descriptionFontSize,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(height: 8),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 30),
-                            Expanded(
-                              flex: 2,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(20),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (context) => const FactoryImagePage(
-                                        initialCategory: 'Wooden Factory',
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  height: videoHeight,
-                                  padding: EdgeInsets.all(20),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        blurRadius: 10,
-                                        offset: Offset(0, 5),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Wood Factory',
-                                          style: TextStyle(
-                                            fontSize: factoryTitleFontSize,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        SizedBox(height: 16),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: buildIconColumn(
-                                                Icons.location_on,
-                                                'Location : Pothur,Redhills',
-                                                iconContainerSize,
-                                                descriptionFontSize,
-                                              ),
-                                            ),
-                                            SizedBox(width: 16),
-                                            Expanded(
-                                              child: buildIconColumn(
-                                                Icons.area_chart,
-                                                'Area: 5000 sqft',
-                                                iconContainerSize,
-                                                descriptionFontSize,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 50),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: buildIconColumn(
-                                                Icons.precision_manufacturing,
-                                                'Plywood Processing Unit',
-                                                iconContainerSize,
-                                                descriptionFontSize,
-                                              ),
-                                            ),
-                                            SizedBox(width: 16),
-                                            Expanded(
-                                              child: buildIconColumn(
-                                                Icons.people,
-                                                '35 + Workers',
-                                                iconContainerSize,
-                                                descriptionFontSize,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 16),
-                                        Text(
-                                          'Main production facility with advanced machinery',
-                                          style: TextStyle(
-                                            fontSize: descriptionFontSize,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                ],
-              ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+              ],
             ),
           ),
         ),

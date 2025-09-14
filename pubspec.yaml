@@ -39,6 +39,8 @@ dependencies:
   material_symbols_icons: ^4.2719.0 # Or latest
   video_player: ^2.8.2
   chewie: ^1.7.2
+  flutter_gen_runner: ^5.4.0
+  build_runner: ^2.4.6
   panorama: ^0.4.1
 
 
@@ -61,6 +63,22 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/project_page/Residential Project/Avinash/
+    - assets/project_page/Residential Project/Kilpauk/
+    - assets/project_page/Residential Project/Lake Dugar/
+    - assets/project_page/Residential Project/Medavakam/
+    - assets/project_page/Residential Project/Nagaraj/
+    - assets/project_page/Residential Project/Vepambattu/
+    - assets/project_page/Residential Project/Vidhya/
+    - assets/project_page/Residential Project/Purasaiwakkam/
+    - assets/project_page/Commercial Project/Brakes India Bawal/
+    - assets/project_page/Commercial Project/Chetpet Office/
+    - assets/project_page/Commercial Project/Egmore Showroom/
+    - assets/project_page/Commercial Project/Muppad Assembly/
+    - assets/project_page/Commercial Project/OP Mobility Canteen/
+    - assets/project_page/Commercial Project/OP Mobility Display/
+    - assets/project_page/Commercial Project/TIDC/
+    - assets/project_page/Commercial Project/Universal/
     - assets/room1,1.webp
     - assets/room1,2.webp
     - assets/room2,1.webp
