@@ -928,7 +928,7 @@ class _FactorySectionState extends State<FactorySection> {
                                 );
                               },
                               child: Container(
-                                height: videoHeight,
+
                                 padding: EdgeInsets.all(20),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -1084,89 +1084,75 @@ class _FactorySectionState extends State<FactorySection> {
                                   ),
                                 );
                               },
-                              child: Container(
-                                height: videoHeight,
-                                padding: EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      blurRadius: 10,
-                                      offset: Offset(0, 5),
+                              child: Center(
+
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Wood Factory',
+                                      style: TextStyle(
+                                        fontSize: factoryTitleFontSize,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 16),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.location_on,
+                                            'Location : Pothur,Redhills',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                        SizedBox(width: 16),
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.area_chart,
+                                            'Area: 5000 sqft',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 50),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.precision_manufacturing,
+                                            'Plywood Processing Unit',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                        SizedBox(width: 16),
+                                        Expanded(
+                                          child: buildIconColumn(
+                                            Icons.people,
+                                            '35 + Workers',
+                                            iconContainerSize,
+                                            descriptionFontSize,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 16),
+                                    Text(
+                                      'Main production facility with advanced machinery',
+                                      style: TextStyle(
+                                        fontSize: descriptionFontSize,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
                                   ],
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Wood Factory',
-                                        style: TextStyle(
-                                          fontSize: factoryTitleFontSize,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: 16),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: buildIconColumn(
-                                              Icons.location_on,
-                                              'Location : Pothur,Redhills',
-                                              iconContainerSize,
-                                              descriptionFontSize,
-                                            ),
-                                          ),
-                                          SizedBox(width: 16),
-                                          Expanded(
-                                            child: buildIconColumn(
-                                              Icons.area_chart,
-                                              'Area: 5000 sqft',
-                                              iconContainerSize,
-                                              descriptionFontSize,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 50),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: buildIconColumn(
-                                              Icons.precision_manufacturing,
-                                              'Plywood Processing Unit',
-                                              iconContainerSize,
-                                              descriptionFontSize,
-                                            ),
-                                          ),
-                                          SizedBox(width: 16),
-                                          Expanded(
-                                            child: buildIconColumn(
-                                              Icons.people,
-                                              '35 + Workers',
-                                              iconContainerSize,
-                                              descriptionFontSize,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 16),
-                                      Text(
-                                        'Main production facility with advanced machinery',
-                                        style: TextStyle(
-                                          fontSize: descriptionFontSize,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
                                 ),
                               ),
                             ),

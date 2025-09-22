@@ -876,6 +876,7 @@ class _HoverImageCardState extends State<_HoverImageCard> {
                        "Arch Interior",
                         style: const TextStyle(
                           color: Colors.white,
+
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),

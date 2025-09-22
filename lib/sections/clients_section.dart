@@ -121,32 +121,32 @@ class _ClientsSectionState extends State<ClientsSection> {
             endIndent: dividerIndent,
             color: Theme.of(context).disabledColor,
           ),
-          const SizedBox(height: 20), // Reduced spacing for mobile
+          const SizedBox(height: 10), // Reduced spacing for mobile
           SizedBox(
-            height: sectionHeight,
+            height: sectionHeight ,
             child: PageView.builder(
               controller: _controller,
               itemBuilder: (context, index) {
                 final int actualIndex = index % clientImages.length;
                 final diff = (_currentPage - index).abs();
-                final scale = 0.9 + (1 - diff).clamp(0, 0.1);
+                final scale = 0.85 + (1 - diff).clamp(0, 0.1);
                 return Transform.scale(
                   scale: scale,
                   child: SizedBox(
                     width: itemWidth,
-                    height: itemHeight, // Added explicit height constraint
+                   // height: itemHeight, // Added explicit height constraint
                     child: Container(
                       margin: EdgeInsets.symmetric(
                         horizontal: isMobile ? 4 : 8,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                       color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
                             color: Theme.of(context).disabledColor,
                             blurRadius: 14,
-                            offset: const Offset(0, 8),
+                         //   offset: const Offset(0, 8),
                           ),
                         ],
                       ),
