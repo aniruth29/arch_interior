@@ -445,26 +445,29 @@ class _ProjectsPageState extends State<ProjectsPage> {
   }
 
   Widget _buildClientGrid(List<ClientProject> clients) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(12),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-        childAspectRatio: 4 / 3,
-      ),
-      itemCount: clients.length,
-      itemBuilder: (context, index) {
-        final client = clients[index];
-        final hoverEffect = _projectHoverEffects[client.name] ?? 'scale';
+    return Padding(
+      padding: const EdgeInsets.only(left: 35, right: 35),
+      child: GridView.builder(
+        padding: const EdgeInsets.all(16),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4, // Increased from 3 to 4 for smaller images
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 1.2, // Adjusted aspect ratio for smaller, more square images
+        ),
+        itemCount: clients.length,
+        itemBuilder: (context, index) {
+          final client = clients[index];
+          final hoverEffect = _projectHoverEffects[client.name] ?? 'scale';
 
-        return _HoverImageCard(
-          imagePath: client.thumbnail,
-          title: client.name,
-          onButtonPressed: () => _openClientGallery(client.galleryImages, 0),
-          transitionType: hoverEffect,
-        );
-      },
+          return _HoverImageCard(
+            imagePath: client.thumbnail,
+            title: client.name,
+            onButtonPressed: () => _openClientGallery(client.galleryImages, 0),
+            transitionType: hoverEffect,
+          );
+        },
+      ),
     );
   }
 
@@ -476,75 +479,75 @@ class _ProjectsPageState extends State<ProjectsPage> {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 220,
-                  child: Image.asset(
-                    'assets/modular_kitchen.webp',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 220,
-                  color: Colors.black.withOpacity(0.3),
-                ),
-                Positioned(
-                  left: 40,
-                  top: 80,
-                  child: const Text(
-                    'We Brings Your Dream Into Reality',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 220,
+                    child: Image.asset(
+                      'assets/modular_kitchen.webp',
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                Positioned(
-                  right: 40,
-                  top: 80,
-                  child: Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (_) => const HomePage()),
-                          );
-                        },
-                        child: const Text(
-                          'HOME',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'GALLERY',
-                          style: TextStyle(
-                            color: theme.colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
+                  Container(
+                    width: double.infinity,
+                    height: 220,
+                    color: Colors.black.withOpacity(0.3),
                   ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Column(
+                  Positioned(
+                    left: 40,
+                    top: 80,
+                    child: const Text(
+                      'We Brings Your Dream Into Reality',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 40,
+                    top: 80,
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (_) => const HomePage()),
+                            );
+                          },
+                          child: const Text(
+                            'HOME',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'GALLERY',
+                            style: TextStyle(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Column(
                 children: [
                   const SizedBox(height: 40),
                   const Text(
@@ -599,7 +602,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
                     ),
                   ),
                   const Divider(height: 1, thickness: 1),
-                  Expanded(
+                  SizedBox(
+                    height: 800, // Fixed height for TabBarView
                     child: TabBarView(
                       children: [
                         _buildClientGrid([
@@ -613,8 +617,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -844,64 +848,83 @@ class _HoverImageCardState extends State<_HoverImageCard> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: _buildTransitionEffect(
-              Image.asset(
-                widget.imagePath,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
-              ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0), // Add padding around the entire card
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: const Color.fromARGB(255, 182, 181, 181),
+              width: 2,
             ),
-          ),
-          AnimatedOpacity(
-            duration: const Duration(milliseconds: 200),
-            opacity: _isHovered ? 1.0 : 0.0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withAlpha(100),
-                borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                spreadRadius: 4,
+                blurRadius: 10,
+                offset: const Offset(0, 5),
               ),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (widget.title != null)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                       "Arch Interior",
-                        style: const TextStyle(
-                          color: Colors.white,
-
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Stack(
+              children: [
+                _buildTransitionEffect(
+                  Image.asset(
+                    widget.imagePath,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
+                ),
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 200),
+                  opacity: _isHovered ? 1.0 : 0.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black.withAlpha(100),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (widget.title != null)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(
+                             "Arch Interior",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white.withAlpha(230),
+                            shape: const CircleBorder(),
+                            padding: const EdgeInsets.all(12),
+                            elevation: 2,
+                          ),
+                          onPressed: widget.onButtonPressed,
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.black,
+                            size: 28,
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white.withAlpha(230),
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(12),
-                      elevation: 2,
-                    ),
-                    onPressed: widget.onButtonPressed,
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.black,
-                      size: 28,
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
