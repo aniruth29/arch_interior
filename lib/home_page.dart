@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intdesign/sections/factory_image_secttion.dart';
 import 'sections/hero_section.dart';
 import 'sections/about_us_section.dart';
 import 'sections/portfolio_section.dart';
@@ -40,6 +41,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _navigateToFactory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const FactoryImagePage()), // Your distinct page
+    );
+  }
+
   void _navigateToProjects() {
     Navigator.push(
       context,
@@ -58,6 +66,7 @@ class _HomePageState extends State<HomePage> {
               onAboutTap: _navigateToAboutUs,
               onProjectsTap: _navigateToProjects,
               onContactTap: _scrollToContact,
+              onFactoryTab: _navigateToFactory,
             ),
             // Your other sections here...
             const HeroSection(),

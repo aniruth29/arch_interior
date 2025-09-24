@@ -4,12 +4,14 @@ class CustomAppBar extends StatelessWidget {
   final VoidCallback? onAboutTap;
   final VoidCallback? onProjectsTap;
   final VoidCallback? onContactTap;
+  final VoidCallback? onFactoryTab;
 
   const CustomAppBar({
     super.key,
     this.onAboutTap,
     this.onProjectsTap,
     this.onContactTap,
+    this.onFactoryTab,
   });
 
   @override
@@ -55,6 +57,16 @@ class CustomAppBar extends StatelessWidget {
                   onPressed: onAboutTap ?? () {},
                   child: Text(
                     'About Us',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: onFactoryTab ?? () {},
+                  child: Text(
+                    'Factory',
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w500,

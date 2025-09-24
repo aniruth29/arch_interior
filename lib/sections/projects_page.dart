@@ -32,7 +32,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     'Medavakam': 'rotate',
     'Brakes India Bawal': 'scale',
     'Chetpet Office': 'slide_right_left',
-    'Egmore Showroom': 'reveal_right',
+    'Egmore Showroom': 'wipe_left',
     'Muppad Assembly': 'scale',
     'OP Mobility Canteen': 'rotate',
     'OP Mobility Display': 'slide_down_up',
@@ -43,7 +43,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
   final List<ClientProject> residentialClients = [
     ClientProject(
       name: 'Avinash',
-      thumbnail: 'assets/residential/1_avi.jpeg',
+      thumbnail:  'assets/project_page/Residential Project/Avinash/1_avi.jpeg',
       galleryImages: [
         'assets/project_page/Residential Project/Avinash/1_avi.jpeg',
         'assets/project_page/Residential Project/Avinash/2_avi_p.jpeg',
@@ -448,6 +448,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     return Padding(
       padding: const EdgeInsets.only(left: 35, right: 35),
       child: GridView.builder(
+
         padding: const EdgeInsets.all(16),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4, // Increased from 3 to 4 for smaller images
@@ -676,119 +677,7 @@ class _HoverImageCardState extends State<_HoverImageCard> {
           child: child,
         );
 
-      case 'reveal_left':
-        return Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.centerLeft,
-                clipBehavior: Clip.none,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  width: _isHovered ? 0 : MediaQuery.of(context).size.width,
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        );
 
-      case 'reveal_right':
-        return Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.centerRight,
-                clipBehavior: Clip.none,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  width: _isHovered ? 0 : MediaQuery.of(context).size.width,
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        );
-
-      case 'reveal_top':
-        return Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.topCenter,
-                clipBehavior: Clip.none,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  height: _isHovered ? 0 : MediaQuery.of(context).size.height,
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        );
-
-      case 'reveal_bottom':
-        return Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.bottomCenter,
-                clipBehavior: Clip.none,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  height: _isHovered ? 0 : MediaQuery.of(context).size.height,
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        );
-
-      case 'wipe_left':
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Stack(
-            children: [
-              child,
-              Positioned.fill(
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  color: Colors.black.withOpacity(0.6),
-                  alignment: Alignment.centerRight,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 400),
-                    width: _isHovered ? 0 : MediaQuery.of(context).size.width,
-                    color: Colors.transparent,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
       case 'scale':
         return AnimatedScale(
           duration: const Duration(milliseconds: 300),
@@ -803,24 +692,7 @@ class _HoverImageCardState extends State<_HoverImageCard> {
           curve: Curves.easeInOut,
           child: child,
         );
-      case 'blur':
-        return Stack(
-          children: [
-            child,
-            if (_isHovered)
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-                  child: Container(),
-                ),
-              ),
-          ],
-        );
+
       case 'rotate':
         return AnimatedRotation(
           duration: const Duration(milliseconds: 400),
